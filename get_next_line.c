@@ -6,12 +6,11 @@
 /*   By: julnolle <julnolle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 11:41:11 by julnolle          #+#    #+#             */
-/*   Updated: 2020/01/22 16:01:59 by julnolle         ###   ########.fr       */
+/*   Updated: 2020/01/23 13:03:52 by julnolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 void	ft_strjoin_back(char *back, char **src)
 {
@@ -40,16 +39,16 @@ int		ft_strchr_pos(const char *s, int c)
 	return (pos);
 }
 
-void	ft_read_line(char **str, int fd)
+void	ft_read_line(char **str, int fd, int *ret)
 {
-	char	buf[BUFFER_SIZE + 1];
-	int		ret;
+	char buf[BUFFER_SIZE + 1];
 
+	*ret = 1;
 	while (ft_strchr_pos(*str, '\n') == -1 || ft_strchr_pos(*str, '\0') == -1)
 	{
-		if ((ret = read(fd, buf, BUFFER_SIZE)) > 0)
+		if (((*ret) = read(fd, buf, BUFFER_SIZE)) > 0)
 		{
-			buf[ret] = '\0';
+			buf[(*ret)] = '\0';
 			ft_strjoin_back(buf, str);
 		}
 		else
@@ -74,7 +73,7 @@ int		ft_fill_line(char **line, char **str)
 	}
 	else if (ft_strchr_pos(*str, '\0') != -1)
 	{
-		*line = *str;
+		*line = ft_strdup(*str);
 		free(*str);
 		return (0);
 	}
@@ -84,6 +83,7 @@ int		ft_fill_line(char **line, char **str)
 int		get_next_line(int fd, char **line)
 {
 	static char	*str;
+	int			ret;
 
 	if (fd < 0 || line == NULL || BUFFER_SIZE <= 0 || BUFFER_SIZE > 65535)
 		return (-1);
@@ -94,7 +94,9 @@ int		get_next_line(int fd, char **line)
 	}
 	if (str)
 	{
-		ft_read_line(&str, fd);
+		ft_read_line(&str, fd, &ret);
+		if (ret == -1)
+			return (-1);
 		return (ft_fill_line(line, &str));
 	}
 	return (-1);
