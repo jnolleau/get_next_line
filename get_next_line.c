@@ -6,7 +6,7 @@
 /*   By: julnolle <julnolle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 11:41:11 by julnolle          #+#    #+#             */
-/*   Updated: 2020/01/23 18:21:31 by julnolle         ###   ########.fr       */
+/*   Updated: 2020/01/23 18:54:57 by julnolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int				get_next_line(int fd, char **line)
 	static char	*str;
 	int			ret;
 
-	if (fd < 0 || line == NULL || BUFFER_SIZE <= 0 || BUFFER_SIZE > 65535)
+	if (fd < 0 || line == NULL || BUFFER_SIZE <= 0 || BUFFER_SIZE > 8384550)
 		return (-1);
 	if (!str)
 	{
