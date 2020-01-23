@@ -6,13 +6,13 @@
 /*   By: julnolle <julnolle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 14:52:50 by julnolle          #+#    #+#             */
-/*   Updated: 2020/01/22 15:56:21 by julnolle         ###   ########.fr       */
+/*   Updated: 2020/01/23 18:21:45 by julnolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+static	size_t	ft_strlen(const char *str)
 {
 	size_t i;
 
@@ -22,7 +22,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char			*ft_strjoin(char const *s1, char const *s2)
 {
 	char		*dst;
 	size_t		size;
@@ -50,7 +50,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (dst);
 }
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+static	void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t i;
 
@@ -65,7 +65,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	return (dst);
 }
 
-char	*ft_strdup(const char *src)
+char			*ft_strdup(const char *src)
 {
 	char	*dest;
 	size_t	len;
@@ -77,7 +77,7 @@ char	*ft_strdup(const char *src)
 	return (dest);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char			*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*dst;
 	size_t	i;

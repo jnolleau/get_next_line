@@ -6,13 +6,13 @@
 /*   By: julnolle <julnolle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 11:41:11 by julnolle          #+#    #+#             */
-/*   Updated: 2020/01/23 13:03:52 by julnolle         ###   ########.fr       */
+/*   Updated: 2020/01/23 18:21:31 by julnolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	ft_strjoin_back(char *back, char **src)
+static	void	ft_strjoin_back(char *back, char **src)
 {
 	char *tmp;
 
@@ -20,11 +20,13 @@ void	ft_strjoin_back(char *back, char **src)
 		return ;
 	tmp = ft_strdup(*src);
 	free(*src);
+	*src = NULL;
 	*src = ft_strjoin(tmp, back);
 	free(tmp);
+	tmp = NULL;
 }
 
-int		ft_strchr_pos(const char *s, int c)
+static	int		ft_strchr_pos(const char *s, int c)
 {
 	size_t pos;
 
@@ -39,7 +41,7 @@ int		ft_strchr_pos(const char *s, int c)
 	return (pos);
 }
 
-void	ft_read_line(char **str, int fd, int *ret)
+static	void	ft_read_line(char **str, int fd, int *ret)
 {
 	char buf[BUFFER_SIZE + 1];
 
@@ -56,7 +58,7 @@ void	ft_read_line(char **str, int fd, int *ret)
 	}
 }
 
-int		ft_fill_line(char **line, char **str)
+static	int		ft_fill_line(char **line, char **str)
 {
 	ssize_t	pos;
 	char	*tmp;
@@ -67,20 +69,23 @@ int		ft_fill_line(char **line, char **str)
 		*line = ft_substr(*str, 0, pos);
 		tmp = ft_strdup(*str);
 		free(*str);
+		*str = NULL;
 		*str = ft_strdup(tmp + pos + 1);
 		free(tmp);
+		tmp = NULL;
 		return (1);
 	}
 	else if (ft_strchr_pos(*str, '\0') != -1)
 	{
 		*line = ft_strdup(*str);
 		free(*str);
+		*str = NULL;
 		return (0);
 	}
 	return (-1);
 }
 
-int		get_next_line(int fd, char **line)
+int				get_next_line(int fd, char **line)
 {
 	static char	*str;
 	int			ret;
