@@ -6,7 +6,7 @@
 /*   By: julnolle <julnolle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 14:47:17 by julnolle          #+#    #+#             */
-/*   Updated: 2020/04/30 12:03:37 by julnolle         ###   ########.fr       */
+/*   Updated: 2020/04/30 15:49:00 by julnolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE=32
+#  define BUFFER_SIZE 32
 
 # endif
 
