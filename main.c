@@ -6,13 +6,13 @@
 /*   By: julnolle <julnolle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 11:42:54 by julnolle          #+#    #+#             */
-/*   Updated: 2020/04/30 11:50:38 by julnolle         ###   ########.fr       */
+/*   Updated: 2020/07/13 18:59:33 by julnolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-int main()
+/*
+int main(void)
 {
 	int             fd;
 	int             i;
@@ -259,8 +259,8 @@ int main()
 	else
 		printf("Not Good, you don't return -1 if no FD\n\n");
 	return (0);
-}
-/*
+}*/
+
 void	ft_putstr(char *s)
 {
 	if (s != NULL)
@@ -307,7 +307,7 @@ int		main(int argc, char **argv)
 	// system("leaks a.out");
 	return (0);
 }
-*/
+
 // int		main(void)
 // {
 // 	int		fd;
