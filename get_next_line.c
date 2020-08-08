@@ -6,7 +6,7 @@
 /*   By: julnolle <julnolle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 11:41:11 by julnolle          #+#    #+#             */
-/*   Updated: 2020/07/13 20:08:08 by julnolle         ###   ########.fr       */
+/*   Updated: 2020/07/31 12:13:38 by julnolle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@ static	void	ft_strjoin_back(char *back, char **src)
 {
 	char *tmp;
 
-	if (back == NULL)
+	if (back == NULL || src == NULL)
 		return ;
 	if (*src)
 	{
 		tmp = ft_strdup(*src);
 		free(*src);
 		*src = NULL;
+		*src = ft_strjoin(tmp, back);
+		free(tmp);
+		tmp = NULL;
 	}
 	else
-		tmp = ft_strdup("");
-	*src = ft_strjoin(tmp, back);
-	free(tmp);
-	tmp = NULL;
+		*src = ft_strdup(back);
 }
 
 static	int		ft_strchr_pos(const char *s, int c)
